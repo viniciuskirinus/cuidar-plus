@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuidar+ | Mapa de Recursos</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <h1>Mapa de Recursos</h1>
+    <a href="index.html">← Voltar</a>
+  </header>
+
+  <div class="filter-bar">
+    <label for="service-type">Filtrar:</label>
+    <select id="service-type">
+      <option value="all">Todos</option>
+      <option value="health">Postos de Saúde</option>
+      <option value="pharma">Farmácias</option>
+      <option value="volunteer">Voluntários</option>
+    </select>
+  </div>
+
+  <div id="map" style="height: 80vh;"></div>
+
+  <footer>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="assets/js/map.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Cuidar+ | Login / Cadastro</title>
+  <!-- Fonte Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <div class="login-card">
+      <!-- abas -->
+      <div class="login-tabs">
+        <button class="tab-button active" data-tab="login">Entrar</button>
+        <button class="tab-button" data-tab="register">Cadastrar</button>
+      </div>
+      <!-- conteúdo Entrar -->
+      <div class="tab-content active" id="login">
+        <form id="login-form">
+          <input type="email" id="login-email" placeholder="Email" required>
+          <input type="password" id="login-pass" placeholder="Senha" required>
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
+      <!-- conteúdo Cadastrar -->
+      <div class="tab-content" id="register">
+        <form id="register-form">
+          <input type="text" id="reg-name" placeholder="Nome" required>
+          <input type="email" id="reg-email" placeholder="Email" required>
+          <input type="password" id="reg-pass" placeholder="Senha" required>
+          <select id="reg-type" required>
+            <option value="">Selecione perfil</option>
+            <option value="patient">Paciente</option>
+            <option value="volunteer">Voluntário</option>
+          </select>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- script de troca de abas -->
+  <script>
+    document.querySelectorAll('.tab-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // desmarca todas
+        document.querySelectorAll('.tab-button, .tab-content').forEach(el => el.classList.remove('active'));
+        // ativa a clicada e seu conteúdo
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+
+  <!-- scripts já existentes -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/feedback.js"></script>
+</body>
+</html>

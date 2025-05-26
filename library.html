@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuidar+ | Biblioteca</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
+</head>
+<body>
+  <header class="library-header">
+     <img src="https://picsum.photos/id/1025/1200/300" alt="Banner Saúde">
+    <h1>Conteúdos Educativos</h1>
+    <a href="index.html">← Voltar</a>
+  </header>
+
+  <main>
+    <div class="filter-bar">
+      <label>Categoria:
+        <select id="category-filter">
+          <option value="all">Todas</option>
+        </select>
+      </label>
+      <label>Ano:
+        <select id="year-sort">
+          <option value="desc">Mais recentes ↓</option>
+          <option value="asc">Mais antigos ↑</option>
+        </select>
+      </label>
+      <input type="search" id="search-box" placeholder="Buscar por título ou autor">
+      <button id="toggle-fav">Ver Favoritos</button>
+    </div>
+
+    <div id="cards-container" class="cards-grid"></div>
+  </main>
+
+  <!-- Modal de Detalhes -->
+  <div id="detail-modal" class="modal">
+    <div class="modal-content">
+      <h3 id="detail-title"></h3>
+      <p><em id="detail-author-year"></em></p>
+      <p id="detail-desc"></p>
+      <a id="detail-link" href="" target="_blank">Acessar material</a>
+      <div class="modal-actions">
+        <button id="close-detail">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/library.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Cuidar+ | Agendar Visita</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
+</head>
+<body class="schedule-page">
+
+  <!-- HEADER PADRÃO IGUAL AO INDEX -->
+  <header>
+    <h1>Cuidar+</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Agendar</a>
+      <a href="map.html">Mapa</a>
+      <a href="library.html">Conteúdos</a>
+      <a href="profile.html">Perfil</a>
+      <a href="dashboard.html">Painel</a>
+      <a href="#" id="logout">← Sair</a>
+      <a href="login.html" id="login-link">Entrar / Cadastrar</a>
+    </nav>
+  </header>
+
+  <main class="schedule-container">
+    <div class="calendar-wrapper">
+      <h2>Selecione a Data: <span id="month-year"></span></h2>
+      <div class="calendar-weekdays">
+        <div>Dom</div><div>Seg</div><div>Ter</div>
+        <div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+      </div>
+      <div id="calendar" class="calendar-grid"></div>
+    </div>
+
+    <div class="slot-wrapper">
+      <h2>Escolha o Horário</h2>
+      <div id="time-slots" class="timeslot-grid"></div>
+      <button id="save-appointment" class="btn-primary">Agendar Visita</button>
+    </div>
+
+    <section class="my-visits-section">
+      <h2>Minhas Visitas Agendadas</h2>
+      <div id="my-visits-list" class="visits-list"></div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/calendar.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Importância da hidratação em idosos",
+    "author": "Dr. Silva",
+    "year": 2025,
+    "category": "Hidratação",
+    "description": "Como a hidratação adequada previne complicações e melhora a qualidade de vida em pacientes idosos.",
+    "link": "#",
+    "image": "https://picsum.photos/id/1011/400/200"
+  },
+  {
+    "id": 2,
+    "title": "Prevenção de quedas",
+    "author": "Ministério da Saúde",
+    "year": 2024,
+    "category": "Segurança",
+    "description": "Técnicas e adaptações no ambiente para reduzir riscos de quedas em domicílio.",
+    "link": "#",
+    "image": "https://picsum.photos/id/1012/400/200"
+  },
+  {
+    "id": 3,
+    "title": "Relacionamento e vínculo no atendimento",
+    "author": "Fiocruz",
+    "year": 2023,
+    "category": "Psicossocial",
+    "description": "A importância do acolhimento e vínculo entre paciente e profissional de saúde.",
+    "link": "#",
+    "image": "https://picsum.photos/id/1013/400/200"
+  },
+  {
+    "id": 4,
+    "title": "Noções básicas de primeiros socorros",
+    "author": "Cruz Vermelha",
+    "year": 2022,
+    "category": "Emergência",
+    "description": "Passo-a-passo para lidar com situações comuns de urgência enquanto aguarda socorro especializado.",
+    "link": "#",
+    "image": "https://picsum.photos/id/1014/400/200"
+  },
+  {
+    "id": 5,
+    "title": "Alimentação adequada em convalescentes",
+    "author": "Drª. Almeida",
+    "year": 2025,
+    "category": "Nutrição",
+    "description": "Orientações nutricionais para pacientes em recuperação pós-operatório ou doenças agudas.",
+    "link": "#",
+    "image": "https://picsum.photos/id/1015/400/200"
+  }
+]

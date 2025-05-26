@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Cuidar+ | Meu Perfil</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
+</head>
+<body class="profile-page">
+
+  <!-- HEADER PADRÃO IGUAL AO INDEX -->
+  <header>
+    <h1>Cuidar+</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Agendar</a>
+      <a href="map.html">Mapa</a>
+      <a href="library.html">Conteúdos</a>
+      <a href="dashboard.html">Painel</a>
+      <a href="#" id="logout">Sair</a>
+    </nav>
+  </header>
+
+  <main class="profile-container">
+    <div class="profile-card">
+      <div class="avatar-wrapper">
+        <img id="avatar" src="https://picsum.photos/id/1005/150/150" alt="Avatar">
+      </div>
+      <div class="info">
+        <h3 id="user-name">Nome Usuário</h3>
+        <p id="user-email">email@exemplo.com</p>
+        <button id="edit-profile" class="btn-secondary">Editar Perfil</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts: main.js ajusta o menu, profile.js preenche os dados -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const email = sessionStorage.getItem('currentUser');
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const me = users.find(u => u.email === email);
+      if (!me) return window.location = 'login.html';
+
+      document.getElementById('user-name').innerText  = me.name;
+      document.getElementById('user-email').innerText = me.email;
+
+      // Logout
+      document.getElementById('logout').addEventListener('click', e => {
+        e.preventDefault();
+        sessionStorage.removeItem('currentUser');
+        window.location = 'index.html';
+      });
+
+      // Edit
+      document.getElementById('edit-profile').onclick = () =>
+        alert('Funcionalidade em construção.');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuidar+ | Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
+</head>
+<body class="home-page">
+  <header>
+    <h1>Cuidar+</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Agendar</a>
+      <a href="map.html">Mapa</a>
+      <a href="library.html">Conteúdos</a>
+      <a href="profile.html">Perfil</a>
+      <a href="dashboard.html">Painel</a>
+      <a href="#" id="logout">← Sair</a>
+      <a href="login.html" id="login-link">Entrar / Cadastrar</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Conectando quem precisa de cuidado a quem pode ajudar</h2>
+    <p>Agende visitas domiciliares, encontre voluntários e aprenda boas práticas de saúde.</p>
+  </section>
+
+  <!-- AGENDAS -->
+  <section class="stats-cards">
+    <div class="stats-card volunteers-card">
+      <h3>Voluntários</h3>
+      <p class="stats-number" id="vol-count">0</p>
+      <div class="volunteers-list" id="volunteers-list"></div>
+    </div>
+    <div class="stats-card visits-card">
+      <h3>Visitas Agendadas</h3>
+      <p class="stats-number" id="visit-count">0</p>
+      <div class="visits-list" id="visits-list"></div>
+    </div>
+  </section>
+
+  <!-- VOLUNTÁRIO DESTAQUE -->
+  <section class="featured-volunteer">
+    <h3>Voluntário Destaque</h3>
+    <div id="featured-volunteer" class="volunteer-card"></div>
+  </section>
+
+  <!-- DICAS RÁPIDAS DE SAÚDE -->
+  <section class="quick-tips">
+    <h3>Dicas Rápidas de Saúde</h3>
+    <div id="quick-tips-list" class="tips-grid"></div>
+  </section>
+
+  <footer>
+    <button id="open-feedback">Deixe seu feedback</button>
+    <div id="modal-feedback" class="modal">
+      <div class="modal-content">
+        <h3>Feedback</h3>
+        <textarea id="fb-text" rows="4" placeholder="Conte o que achou..."></textarea>
+        <div class="modal-actions">
+          <button id="fb-send">Enviar</button>
+          <button id="fb-close">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/feedback.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
