@@ -111,87 +111,180 @@ th, td { border:1px solid #ccc; padding:.5rem; text-align:left; }
 .library-header {
   text-align: center;
   position: relative;
+  height: 300px; /* Altura fixa para o banner */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Garante que a imagem não transborde */
 }
 .library-header img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
   opacity: 0.85;
+  z-index: 1; /* Coloca a imagem atrás do texto */
 }
 .library-header h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative; /* Para ficar acima da imagem */
   color: #fff;
-  font-size: 2.5rem;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  font-size: 3rem; /* Aumenta o tamanho da fonte */
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6); /* Sombra mais forte */
+  z-index: 2; /* Coloca o texto acima da imagem */
+}
+.library-header .back-link { /* Estilo para o botão "Voltar" */
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0,0,0,0.3); /* Fundo semi-transparente */
+  border-radius: 5px;
+  z-index: 3;
+  transition: background 0.3s;
+}
+.library-header .back-link:hover {
+    background: rgba(0,0,0,0.5);
+}
+
+/* Barra de Filtros Aprimorada */
+.filter-bar {
+  background: #2a9d8f; /* Fundo com a cor primária */
+  padding: 1.5rem;
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+  gap: 1rem; /* Espaçamento entre os itens */
+  justify-content: center; /* Centraliza os itens */
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem; /* Espaçamento abaixo da barra de filtro */
+}
+.filter-bar label {
+    color: #fff; /* Cor do texto branco */
+    font-weight: bold;
+    display: flex; /* Alinha o texto e o select na mesma linha */
+    align-items: center;
+    gap: 0.5rem;
+}
+.filter-bar select,
+.filter-bar input[type="search"],
+.filter-bar button {
+  padding: 0.6rem 1rem;
+  border: 1px solid #fff; /* Borda branca */
+  border-radius: 5px;
+  background: rgba(255,255,255,0.2); /* Fundo semi-transparente */
+  color: #fff; /* Cor do texto */
+  font-size: 0.95rem;
+  outline: none; /* Remove a borda de foco padrão */
+}
+.filter-bar select option {
+    background: #2a9d8f; /* Cor de fundo para as opções do select */
+    color: #fff;
+}
+.filter-bar input::placeholder { /* Estilo do placeholder */
+    color: rgba(255,255,255,0.7);
+}
+.filter-bar input:focus,
+.filter-bar select:focus {
+    background: rgba(255,255,255,0.3);
+}
+.filter-bar button {
+  background: #f4a261; /* Cor de destaque para o botão */
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.filter-bar button:hover {
+  background: #e76f51;
 }
 
 /* Grid de cards */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.5rem;
-  padding: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Aumenta minmax para cards maiores */
+  gap: 2rem; /* Aumenta o espaçamento entre cards */
+  padding: 0 1.5rem 2rem; /* Ajusta padding */
+  max-width: 1200px; /* Limita a largura para melhor visualização */
+  margin: 0 auto; /* Centraliza */
 }
 
 /* Card estilizado */
 .card {
   background: #fff;
-  border-radius: 8px;
+  border-radius: 10px; /* Cantos mais arredondados */
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra mais pronunciada */
   transition: transform .2s, box-shadow .2s;
-  display: flex;
-  flex-direction: column;
+  display: flex; /* ATENÇÃO: Habilita Flexbox no card */
+  flex-direction: column; /* Organiza os itens em coluna */
+  /* Remove justify-content: space-between daqui para usar margin-top: auto no botão */
 }
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transform: translateY(-5px); /* Efeito de elevação maior */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Sombra maior no hover */
 }
 
 /* Imagem do card */
 .card-image {
   width: 100%;
-  height: 140px;
+  height: 180px; /* Aumenta a altura da imagem */
   object-fit: cover;
 }
 
 /* Conteúdo do card */
 .card-header {
-  padding: 1rem;
+  padding: 1rem 1.2rem; /* Ajusta padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #eee; /* Linha separadora */
 }
 .card-header h4 {
-  font-size: 1.1rem;
+  font-size: 1.25rem; /* Aumenta a fonte do título */
   margin: 0;
+  color: #2a9d8f; /* Cor do título */
 }
 .fav-btn {
   background: none;
   border: none;
-  font-size: 1.4rem;
+  font-size: 1.8rem; /* Aumenta o ícone de favorito */
   cursor: pointer;
+  color: #f4a261; /* Cor para o ícone de favorito */
+  transition: transform 0.2s;
 }
-.card p {
-  padding: 0 1rem;
+.fav-btn:hover {
+    transform: scale(1.1);
+}
+.card-author-year { /* Nova classe para este parágrafo */
+  padding: 0.8rem 1.2rem 0; /* Ajusta padding */
   color: #555;
-  flex-grow: 1;
+  font-size: 0.9rem;
+  flex-grow: 1; /* Permite que este elemento cresça e empurre o botão para baixo */
 }
 .detail-btn {
-  margin: 1rem;
+  margin: 1.2rem; /* Ajusta margem */
+  margin-top: auto; /* ATENÇÃO: Isso empurra o botão para a parte inferior do card */
   background: #2a9d8f;
   color: #fff;
   border: none;
-  padding: .6rem;
-  border-radius: 4px;
+  padding: 0.8rem 1.2rem; /* Aumenta padding do botão */
+  border-radius: 5px; /* Cantos mais arredondados */
   cursor: pointer;
-  align-self: center;
+  align-self: center; /* Centraliza o botão horizontalmente dentro do flex container */
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none; /* Garante que o botão não tenha sublinhado se for um link */
+  transition: background 0.3s;
+}
+.detail-btn:hover {
+  background: #247f72;
 }
 
-/* Reaproveita .modal/.modal-content do feedback */
 
 /* ==== TELA DE LOGIN/CADASTRO ==== */
 body.login-page {
@@ -669,13 +762,119 @@ body.dashboard-page {
   font-weight: 600;
 }
 
+/* Hero Section Aprimorada */
+.hero {
+  padding: 4rem 2rem; /* Aumenta o padding vertical */
+  text-align: center;
+  background: linear-gradient(rgba(42, 157, 143, 0.9), rgba(42, 157, 143, 0.7)), url('https://picsum.photos/seed/healthcare/1600/600') no-repeat center center; /* Imagem de fundo e overlay */
+  background-size: cover;
+  color: #fff;
+}
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+.hero .btn-hero {
+  display: inline-block;
+  background: #fff;
+  color: #2a9d8f;
+  padding: 0.8rem 1.8rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0.5rem;
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.hero .btn-hero:hover {
+  background: #f1f1f1;
+}
+.hero .btn-secondary-hero {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.hero .btn-secondary-hero:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+
+/* SEÇÃO DE RECURSOS DESTACADOS */
+.featured-resources {
+  max-width: 1000px;
+  margin: 3rem auto; /* Mais espaçamento */
+  padding: 0 1rem;
+  text-align: center;
+}
+.featured-resources h3 {
+  color: #2a9d8f;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.resource-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.2s;
+}
+.resource-card:hover {
+  transform: translateY(-5px);
+}
+.resource-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.resource-card h4 {
+  color: #2a9d8f;
+  font-size: 1.4rem;
+  margin: 1rem 1rem 0.5rem;
+}
+.resource-card p {
+  color: #555;
+  margin: 0 1rem 1.5rem;
+  font-size: 0.95rem;
+}
+.resource-card .btn-small { /* Novo estilo para botões pequenos */
+  display: block;
+  width: calc(100% - 2rem); /* Ocupa a largura do card com padding */
+  margin: 0 1rem 1rem;
+  padding: 0.6rem 1rem;
+  background: #2a9d8f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s;
+}
+.resource-card .btn-small:hover {
+  background: #247f72;
+}
+
+
 /* Cards de estatísticas */
 .stats-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   max-width: 1000px;
-  margin: 2rem auto;
+  margin: 3rem auto; /* Mais espaçamento */
   padding: 0 1rem;
 }
 .stats-card {
@@ -755,7 +954,7 @@ body.dashboard-page {
 .featured-volunteer,
 .quick-tips {
   max-width: 1000px;
-  margin: 2rem auto;
+  margin: 3rem auto; /* Mais espaçamento */
   padding: 0 1rem;
 }
 .featured-volunteer h3,
@@ -767,47 +966,71 @@ body.dashboard-page {
 /* Card do voluntário */
 .volunteer-card {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Para alinhar itens verticalmente */
+  align-items: center; /* Centraliza itens */
   background: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1.5rem; /* Aumenta o padding */
+  text-align: center;
 }
 .volunteer-card img {
-  width: 80px;
-  height: 80px;
+  width: 100px; /* Aumenta a imagem */
+  height: 100px; /* Aumenta a imagem */
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 1rem;
+  margin-bottom: 0.8rem; /* Espaçamento abaixo da imagem */
+  border: 3px solid #2a9d8f; /* Borda para destaque */
 }
 .volunteer-card h4 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.4rem; /* Aumenta a fonte */
+  color: #2a9d8f;
 }
+.volunteer-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+.volunteer-card .btn-small { /* Reutiliza o estilo do botão pequeno */
+    display: inline-block; /* Volta a ser inline-block */
+    width: auto; /* Deixa a largura automática */
+    margin: 0; /* Remove margin */
+}
+
 
 /* Grid de dicas */
 .tips-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); /* Aumenta o minmax */
+  gap: 1.5rem; /* Aumenta o gap */
 }
 .tip-card {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 1rem;
+  padding: 1.5rem; /* Aumenta o padding */
   transition: transform .2s, box-shadow .2s;
+  display: flex;
+  flex-direction: column; /* Alinha itens verticalmente */
+  justify-content: space-between; /* Espaça conteúdo */
 }
 .tip-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 .tip-card h4 {
-  margin: 0 0 .5rem;
-  font-size: 1rem;
+  margin: 0 0 .8rem; /* Aumenta margem */
+  font-size: 1.2rem; /* Aumenta fonte */
+  color: #2a9d8f;
 }
 .tip-card p {
-  margin: 0;
+  margin: 0 0 1rem; /* Aumenta margem */
   color: #555;
-  font-size: .9rem;
+  font-size: .95rem;
+}
+.tip-card .btn-small { /* Reutiliza o estilo do botão pequeno */
+    display: inline-block;
+    width: auto;
+    margin: 0;
 }

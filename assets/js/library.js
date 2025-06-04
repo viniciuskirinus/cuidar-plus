@@ -74,23 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'card';
       card.innerHTML = `
-        <div class="card-header">
-          <h4>${c.title}</h4>
-          <button class="fav-btn" data-id="${c.id}">
-            ${favorites.includes(c.id) ? '★' : '☆'}
-          </button>
-        </div>
-        <p><em>${c.author} (${c.year})</em></p>
-        <button class="detail-btn" data-id="${c.id}">Ver detalhes</button>
-      `;
-      cardsContainer.appendChild(card);
-    });
-
-    cardsContainer.innerHTML = '';
-    list.forEach(c => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
         <img class="card-image" src="${c.image}" alt="${c.title}">
         <div class="card-header">
           <h4>${c.title}</h4>
@@ -98,11 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ${favorites.includes(c.id) ? '★' : '☆'}
           </button>
         </div>
-        <p>${c.author} — ${c.year}</p>
+        <p class="card-author-year">${c.author} — ${c.year}</p>
+        <br>
         <button class="detail-btn" data-id="${c.id}">Ver detalhes</button>
       `;
       cardsContainer.appendChild(card);
     });
+    // O trecho duplicado foi removido para evitar problemas de lógica.
   }
 
   // Eventos de filtro e busca

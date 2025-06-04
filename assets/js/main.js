@@ -135,11 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (visitsEl) {
+    // Exibe a especialidade ou um placeholder se não houver
     visitsEl.innerHTML = apps
+      .filter(a => a.status === 'Aceito') // Mostrar apenas visitas aceitas
+      .slice(0, 5) // Limitar a 5 últimas visitas para não poluir
       .map(a => `
         <div class="visit-item">
-          <strong>${a.patient}</strong><br>
-          ${a.date} • ${a.time}
+          <strong>${a.date}</strong> às ${a.time}<br>
+          Especialidade: ${a.specialty ? a.specialty.replace(/_/g, ' ').toUpperCase() : 'Não especificado'}
         </div>
       `).join('');
   }
@@ -152,7 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const rand = vols[Math.floor(Math.random() * vols.length)];
       fvEl.innerHTML = `
         <img src="https://picsum.photos/seed/${encodeURIComponent(rand.name)}/80/80" alt="${rand.name}">
-        <h4>${rand.name}</h4>`;
+        <h4>${rand.name}</h4>
+        <p>Disponível para ajudar em diversas especialidades.</p>
+        `;
     } else {
       fvEl.innerHTML = '<p>Nenhum voluntário cadastrado ainda.</p>';
     }
@@ -168,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="tip-card">
             <h4>${c.title}</h4>
             <p><em>${c.author} (${c.year})</em></p>
+            <a href="library.html" class="btn-small">Ler mais</a>
           </div>
         `).join('');
       })

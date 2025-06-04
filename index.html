@@ -25,29 +25,52 @@
   <section class="hero">
     <h2>Conectando quem precisa de cuidado a quem pode ajudar</h2>
     <p>Agende visitas domiciliares, encontre voluntários e aprenda boas práticas de saúde.</p>
+    <a href="schedule.html" class="btn-hero">Quero Agendar uma Visita</a>
+    <a href="login.html" class="btn-hero btn-secondary-hero">Quero Ser Voluntário</a>
   </section>
 
-  <!-- AGENDAS -->
+  <section class="featured-resources">
+    <h3>Como Podemos Ajudar?</h3>
+    <div class="resources-grid">
+      <div class="resource-card">
+        <img src="https://picsum.photos/id/4/5000/3333" alt="Agendamento Fácil">
+        <h4>Agendamento Descomplicado</h4>
+        <p>Marque visitas domiciliares com voluntários em poucos cliques.</p>
+        <a href="schedule.html" class="btn-small">Agendar Agora</a>
+      </div>
+      <div class="resource-card">
+        <img src="https://picsum.photos/id/1/5000/3333" alt="Encontre Ajuda">
+        <h4>Encontre Profissionais e Voluntários</h4>
+        <p>Localize postos de saúde, farmácias e voluntários próximos a você.</p>
+        <a href="map.html" class="btn-small">Ver no Mapa</a>
+      </div>
+      <div class="resource-card">
+        <img src="https://picsum.photos/id/201/300/200" alt="Conteúdo Educativo">
+        <h4>Aprenda Mais sobre Saúde</h4>
+        <p>Acesse uma biblioteca completa com dicas e materiais sobre cuidado em saúde.</p>
+        <a href="library.html" class="btn-small">Explorar Conteúdos</a>
+      </div>
+    </div>
+  </section>
+
   <section class="stats-cards">
     <div class="stats-card volunteers-card">
-      <h3>Voluntários</h3>
+      <h3>Nossos Voluntários Ativos</h3>
       <p class="stats-number" id="vol-count">0</p>
       <div class="volunteers-list" id="volunteers-list"></div>
     </div>
     <div class="stats-card visits-card">
-      <h3>Visitas Agendadas</h3>
+      <h3>Últimas Visitas Agendadas (Categorias)</h3>
       <p class="stats-number" id="visit-count">0</p>
       <div class="visits-list" id="visits-list"></div>
     </div>
   </section>
 
-  <!-- VOLUNTÁRIO DESTAQUE -->
   <section class="featured-volunteer">
-    <h3>Voluntário Destaque</h3>
+    <h3>Voluntário Destaque do Mês</h3>
     <div id="featured-volunteer" class="volunteer-card"></div>
   </section>
 
-  <!-- DICAS RÁPIDAS DE SAÚDE -->
   <section class="quick-tips">
     <h3>Dicas Rápidas de Saúde</h3>
     <div id="quick-tips-list" class="tips-grid"></div>
