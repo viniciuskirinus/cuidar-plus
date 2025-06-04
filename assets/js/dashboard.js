@@ -253,8 +253,6 @@ window.addEventListener('DOMContentLoaded', () => {
     if (day.classList.contains('has-appointments')) {
       const appIndices = JSON.parse(day.dataset.appointments);
       if (appIndices && appIndices.length > 0) {
-        // Se houver mais de um agendamento no dia, podemos expandir essa lógica
-        // Por simplicidade, vamos mostrar o primeiro.
         const appointmentToShow = allAppointments[appIndices[0]];
         showAppointmentDetails(appointmentToShow);
       }

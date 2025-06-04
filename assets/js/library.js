@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       cardsContainer.appendChild(card);
     });
-    // O trecho duplicado foi removido para evitar problemas de lógica.
   }
 
   // Eventos de filtro e busca
