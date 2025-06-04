@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Cuidar+ | Agendar Visita</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style_schedule.css">
   <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
 </head>
 <body class="schedule-page">
 
-  <!-- HEADER PADRÃO IGUAL AO INDEX -->
   <header>
     <h1>Cuidar+</h1>
     <nav>
@@ -32,13 +32,36 @@
         <div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
       </div>
       <div id="calendar" class="calendar-grid"></div>
-    </div>
-
-    <div class="slot-wrapper">
+      <div class="slot-wrapper">
       <h2>Escolha o Horário</h2>
       <div id="time-slots" class="timeslot-grid"></div>
-      <button id="save-appointment" class="btn-primary">Agendar Visita</button>
     </div>
+
+    </div>
+
+    <div class="details-wrapper">
+        <h2>Detalhes da Visita</h2>
+        <input type="text" id="appointment-cep" placeholder="CEP" required>
+        <input type="text" id="appointment-street" placeholder="Rua" required>
+        <input type="text" id="appointment-number" placeholder="Número" required>
+        <input type="text" id="appointment-complement" placeholder="Complemento (opcional)">
+        <input type="text" id="appointment-neighborhood" placeholder="Bairro" required>
+        <input type="text" id="appointment-city" placeholder="Cidade" required>
+        <input type="text" id="appointment-state" placeholder="Estado (UF)" required maxlength="2">
+        <select id="appointment-specialty" required>
+            <option value="">Selecione a Especialidade</option>
+            <option value="clinico_geral">Clínico Geral</option>
+            <option value="pediatria">Pediatria</option>
+            <option value="fisioterapia">Fisioterapia</option>
+            <option value="enfermagem">Enfermagem</option>
+            <option value="nutricao">Nutrição</option>
+            <option value="psicologia">Psicologia</option>
+        </select>
+        <button id="save-appointment" class="btn-primary">Agendar Visita</button>
+    </div>
+
+    
+    
 
     <section class="my-visits-section">
       <h2>Minhas Visitas Agendadas</h2>

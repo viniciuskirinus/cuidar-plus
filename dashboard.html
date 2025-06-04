@@ -6,10 +6,10 @@
   <title>Cuidar+ | Painel do Voluntário</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="dashboard-page">
-  
-  <!-- HEADER PADRÃO IGUAL AO INDEX -->
+
   <header>
     <h1>Cuidar+</h1>
     <nav>
@@ -23,12 +23,64 @@
   </header>
 
   <main class="dashboard-container">
-    <!-- Título da página agora no main -->
     <h2 class="page-title">Meu Painel</h2>
 
-    <section class="appointments-section">
-      <div id="appointments-list" class="cards-grid"></div>
-    </section>
+    <div class="dashboard-grid">
+      <div class="dashboard-col-left">
+        <section class="chart-section">
+          <h3>Estatísticas de Visitas</h3>
+          <div class="chart-container">
+            <canvas id="visits-chart"></canvas>
+          </div>
+        </section>
+
+        <section class="dashboard-calendar-section">
+          <h3>Visitas Agendadas no Calendário</h3>
+          <div class="calendar-nav">
+            <button id="prev-month-dash">←</button>
+            <span id="month-year-dash"></span>
+            <button id="next-month-dash">→</button>
+          </div>
+          <div class="calendar-weekdays">
+            <div>Dom</div><div>Seg</div><div>Ter</div>
+            <div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+          </div>
+          <div id="dashboard-calendar" class="calendar-grid-dash"></div>
+        </section>
+      </div>
+
+      <div class="dashboard-col-right">
+        <section class="pending-appointments-section">
+          <h3>Novas Solicitações</h3>
+          <div id="pending-appointments-list" class="cards-grid">
+            </div>
+          <p id="no-pending-appointments" style="display: none; text-align: center; color: #555;">Nenhuma nova solicitação no momento.</p>
+        </section>
+
+        <section class="history-appointments-section">
+          <h3>Histórico de Visitas</h3>
+          <div id="history-appointments-list" class="visits-list">
+            </div>
+          <p id="no-history-appointments" style="display: none; text-align: center; color: #555;">Nenhuma visita no histórico.</p>
+        </section>
+      </div>
+    </div>
+
+    <div id="appointment-detail-modal" class="modal">
+      <div class="modal-content">
+        <h3>Detalhes da Visita</h3>
+        <p><strong>Paciente:</strong> <span id="modal-patient"></span></p>
+        <p><strong>Data:</strong> <span id="modal-date"></span></p>
+        <p><strong>Hora:</strong> <span id="modal-time"></span></p>
+        <p><strong>Especialidade:</strong> <span id="modal-specialty"></span></p>
+        <p><strong>Endereço:</strong> <span id="modal-address"></span></p>
+        <p><strong>Status:</strong> <span id="modal-status"></span></p>
+        <div class="modal-actions">
+          <button id="close-appointment-detail" class="btn-secondary">Fechar</button>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <script src="assets/js/main.js"></script>

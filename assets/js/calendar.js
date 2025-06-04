@@ -5,6 +5,17 @@
   const saveBtn    = document.getElementById('save-appointment');
   const visitsList = document.getElementById('my-visits-list');
 
+  // Novos elementos de endereço e especialidade
+  const appointmentCep         = document.getElementById('appointment-cep');
+  const appointmentStreet      = document.getElementById('appointment-street');
+  const appointmentNumber      = document.getElementById('appointment-number');
+  const appointmentComplement  = document.getElementById('appointment-complement');
+  const appointmentNeighborhood= document.getElementById('appointment-neighborhood');
+  const appointmentCity        = document.getElementById('appointment-city');
+  const appointmentState       = document.getElementById('appointment-state');
+  const appointmentSpecialty   = document.getElementById('appointment-specialty');
+
+
   // Data atual
   const today    = new Date();
   const year     = today.getFullYear();
@@ -57,9 +68,54 @@
     });
   }
 
+  // Lógica para preenchimento automático do CEP
+  appointmentCep.addEventListener('blur', () => {
+    const cep = appointmentCep.value.replace(/\D/g, ''); // Remove não-dígitos
+    if (cep.length !== 8) return;
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then(response => response.json())
+      .then(data => {
+        if (!data.erro) {
+          appointmentStreet.value       = data.logradouro;
+          appointmentNeighborhood.value = data.bairro;
+          appointmentCity.value         = data.localidade;
+          appointmentState.value        = data.uf;
+          // Foca no número para o usuário completar
+          appointmentNumber.focus();
+        } else {
+          alert('CEP não encontrado.');
+          clearAddressFields();
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao buscar CEP:', error);
+        alert('Erro ao buscar CEP. Tente novamente.');
+        clearAddressFields();
+      });
+  });
+
+  function clearAddressFields() {
+    appointmentStreet.value       = '';
+    appointmentNumber.value       = '';
+    appointmentComplement.value   = '';
+    appointmentNeighborhood.value = '';
+    appointmentCity.value         = '';
+    appointmentState.value        = '';
+  }
+
+
   saveBtn.addEventListener('click', ()=>{
-    if(!selectedDate)   return alert('Selecione uma data');
-    if(!selectedTime)   return alert('Selecione um horário');
+    if(!selectedDate)          return alert('Selecione uma data');
+    if(!selectedTime)          return alert('Selecione um horário');
+    if(!appointmentCep.value)  return alert('Preencha o CEP');
+    if(!appointmentStreet.value) return alert('Preencha a Rua');
+    if(!appointmentNumber.value) return alert('Preencha o Número');
+    if(!appointmentNeighborhood.value) return alert('Preencha o Bairro');
+    if(!appointmentCity.value) return alert('Preencha a Cidade');
+    if(!appointmentState.value) return alert('Preencha o Estado');
+    if(!appointmentSpecialty.value) return alert('Selecione a Especialidade');
+
 
     const apps  = JSON.parse(localStorage.getItem('appointments')||'[]');
     const users = JSON.parse(localStorage.getItem('users')||'[]');
@@ -70,10 +126,23 @@
       patient: me?.name || 'Anônimo',
       date: selectedDate,
       time: selectedTime,
-      status: 'Pendente'
+      status: 'Pendente',
+      // Novos dados de endereço e especialidade
+      cep: appointmentCep.value,
+      street: appointmentStreet.value,
+      number: appointmentNumber.value,
+      complement: appointmentComplement.value,
+      neighborhood: appointmentNeighborhood.value,
+      city: appointmentCity.value,
+      state: appointmentState.value,
+      specialty: appointmentSpecialty.value
     });
     localStorage.setItem('appointments', JSON.stringify(apps));
     alert('Visita agendada com sucesso!');
+    // Limpa os campos do formulário após o agendamento
+    clearAddressFields();
+    appointmentCep.value = '';
+    appointmentSpecialty.value = '';
     renderMyVisits();
   });
 
@@ -88,9 +157,13 @@
     if(my.length===0){
       visitsList.innerHTML = '<p>Nenhuma visita agendada.</p>';
     } else {
+      // Atualiza a exibição para incluir os novos detalhes
       visitsList.innerHTML = my.map(a=>`
         <div class="visit-item">
-          <strong>${a.date}</strong> às ${a.time} — <em>${a.status}</em>
+          <strong>${a.date}</strong> às ${a.time} — <em>${a.status}</em><br>
+          ${a.specialty.replace('_', ' ').toUpperCase()} em ${a.street}, ${a.number} - ${a.neighborhood}<br>
+          ${a.city} - ${a.state}, CEP: ${a.cep}
+          ${a.complement ? `<br>Complemento: ${a.complement}` : ''}
         </div>
       `).join('');
     }

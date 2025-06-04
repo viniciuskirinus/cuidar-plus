@@ -277,119 +277,6 @@ body.login-page {
 }
 
 
-/* === SCHEDULE PAGE === */
-body.schedule-page {
-  background: #f9f9f9;
-  min-height: 100vh; /* full viewport */
-}
-
-/* Só o container interno fica com padding */
-.schedule-container {
-  padding: 2rem;
-  max-width: 1000px;
-  margin: auto;
-}
-
-.schedule-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: auto;
-}
-.calendar-wrapper,
-.slot-wrapper {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  padding: 1.5rem;
-  flex: 1 1 300px;
-}
-.calendar-wrapper h2,
-.slot-wrapper h2 {
-  margin-bottom: 1rem;
-  color: #2a9d8f;
-}
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-}
-.calendar-grid .day {
-  padding: 0.75rem;
-  background: #f1f1f1;
-  text-align: center;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-}
-.calendar-grid .day:hover {
-  background: #e0f2ef;
-  transform: translateY(-2px);
-}
-.calendar-grid .day.today {
-  border: 2px solid #2a9d8f;
-}
-.calendar-grid .day.selected {
-  background: #2a9d8f;
-  color: #fff;
-}
-.calendar-grid .day.empty {
-  background: transparent;
-  pointer-events: none;
-}
-.timeslot-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-.timeslot-grid .slot {
-  padding: 0.75rem;
-  background: #f1f1f1;
-  text-align: center;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-}
-.timeslot-grid .slot:hover {
-  background: #e0f2ef;
-  transform: translateY(-2px);
-}
-.timeslot-grid .slot.selected {
-  background: #2a9d8f;
-  color: #fff;
-}
-.btn-primary {
-  display: block;
-  width: 100%;
-  padding: 1rem;
-  background: #2a9d8f;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.btn-primary:hover {
-  background: #247f72;
-}
-@media (max-width: 600px) {
-  .schedule-container { flex-direction: column; }
-  .calendar-grid { grid-template-columns: repeat(7, 1fr); font-size: 0.8rem; }
-}
-/* Cabeçalho dos dias da semana */
-.calendar-weekdays {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-align: center;
-  font-weight: bold;
-  color: #2a9d8f;
-  margin-bottom: 0.5rem;
-}
-
-
 /* === PROFILE PAGE === */
 body.profile-page {
   background: #f9f9f9;
@@ -472,36 +359,63 @@ body.dashboard-page {
   flex-direction: column;
 }
 
-.dashboard-header {
-  background: #2a9d8f;
-  color: #fff;
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.dashboard-header h1 {
-  flex: 1;
-  font-size: 1.5rem;
-}
-.back-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-
 .dashboard-container {
   flex: 1;
-  max-width: 1000px;
+  max-width: 1200px; /* Aumenta a largura máxima para preencher mais a tela */
   margin: 2rem auto;
   padding: 0 1rem;
 }
-.dashboard-container h2 {
-  margin-bottom: 1rem;
+.dashboard-container h2.page-title { /* Selecionador mais específico */
+  margin-bottom: 1.5rem; /* Mais espaço para o título principal */
   color: #2a9d8f;
+  text-align: center;
+  font-size: 2rem;
 }
 
-/* Cards Grid */
+/* Novo layout em grid para o dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Coluna esquerda (gráfico/calendário) menor que a direita (solicitações/histórico) */
+  gap: 2rem; /* Espaçamento entre as colunas */
+}
+
+.dashboard-col-left,
+.dashboard-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Espaçamento entre as seções dentro de cada coluna */
+}
+
+.pending-appointments-section,
+.dashboard-calendar-section,
+.history-appointments-section,
+.chart-section /* Adicionado */ {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  /* Removido margin-bottom aqui, pois o gap do flexbox/grid já faz o espaçamento */
+}
+
+.pending-appointments-section h3,
+.dashboard-calendar-section h3,
+.history-appointments-section h3,
+.chart-section h3 /* Adicionado */ {
+  color: #2a9d8f;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Estilos para o contêiner do gráfico */
+.chart-container {
+    padding: 1rem;
+    height: 300px; /* Altura fixa para o gráfico */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cards Grid (Aplicado a pending-appointments-list) */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
@@ -560,6 +474,183 @@ body.dashboard-page {
 }
 .btn-decline:hover {
   background: #d65d3f;
+}
+
+/* --- ESTILOS DO CALENDÁRIO NO DASHBOARD --- */
+.dashboard-calendar-section {
+    text-align: center;
+}
+.calendar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.calendar-nav button {
+    background: #2a9d8f;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    transition: background 0.2s;
+}
+.calendar-nav button:hover {
+    background: #247f72;
+}
+#month-year-dash {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2a9d8f;
+}
+
+/* CORREÇÃO AQUI para os dias da semana do calendário do dashboard */
+.dashboard-calendar-section .calendar-weekdays {
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    color: #2a9d8f;
+    margin-bottom: 0.5rem;
+}
+.calendar-grid-dash {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin: 0 auto;
+}
+.calendar-grid-dash .day {
+  padding: 0.75rem;
+  background: #f1f1f1;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.calendar-grid-dash .day:hover {
+  background: #e0f2ef;
+  transform: translateY(-2px);
+}
+.calendar-grid-dash .day.empty {
+  background: transparent;
+  pointer-events: none;
+}
+.calendar-grid-dash .day.has-appointments {
+    background: #4CAF50;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.calendar-grid-dash .day.has-appointments:hover {
+    background: #45a049;
+}
+
+/* --- ESTILOS DO HISTÓRICO --- */
+.history-appointments-section .visits-list {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.history-item {
+  background: #f1f1f1;
+  border-left: 4px solid #555;
+  padding: .75rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-size: .95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.history-item:hover {
+  background: #e0e0e0;
+}
+
+/* --- MODAL DE DETALHES --- */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.modal-content h3 {
+    margin-bottom: 1rem;
+    color: #2a9d8f;
+    text-align: center;
+}
+.modal-content p {
+    margin-bottom: 0.5rem;
+}
+.modal-actions {
+  text-align: right;
+  margin-top: 1.5rem;
+}
+
+/* Media Query para responsividade do grid */
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* Em telas menores, o layout vira uma coluna */
+  }
+}
+
+/* --- MODAL DE DETALHES (Reaproveitado do feedback) --- */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.modal-content h3 {
+    margin-bottom: 1rem;
+    color: #2a9d8f;
+    text-align: center;
+}
+.modal-content p {
+    margin-bottom: 0.5rem;
+}
+.modal-actions {
+  text-align: right;
+  margin-top: 1.5rem;
 }
 
 
